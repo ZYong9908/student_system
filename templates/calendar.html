@@ -1,0 +1,70 @@
+{% extends 'template.html' %}
+{% block head %}
+    <title>日历页面</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/bootstrap-responsive.min.css"/>
+    <link rel="stylesheet" href="css/matrix-style.css"/>
+    <link rel="stylesheet" href="css/matrix-media.css"/>
+    <style>
+        td{
+            width:50px;
+            text-align: center;
+        }
+          th{
+            width:50px;
+            text-align: center;
+        }
+        h3 h4 {
+            text-align: center;
+        }
+
+    </style>
+{% endblock %}
+{% block content %}
+    <div id="content-header">
+        <div id="breadcrumb"><a href="/index" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a>
+            <a href="/calender" class="current">日历</a></div>
+    </div>
+    <div class="container"style="width: 100%">
+        <h3 class="text-center">日历 {{ date.year }}
+        </h3>
+        {% set week_addr = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'] %}
+        {% for month_addr,monthInfo in content.items() %}
+            <div class="col-lg-3">
+                <h4 class="text-center">{{ month_addr }}</h4>
+                {% with _month=false %}
+                    {% if month_addr == this_month %}
+                        <table style='background-color:#a6e1ec;width:800px;margin-left: 200px' class="table table-bordered">
+                        {% set _month = true %}
+                    {% else %}
+                        <table class="table table-bordered" style="width: 800px;margin-left: 200px">
+                    {% endif %}
+                    <tr>
+                        {% for addr in week_addr %}
+                            <th>{{ addr }}</th>
+                        {% endfor %}
+                    </tr>
+                    {% for weeks in monthInfo %}
+                        <tr>
+                            {% for day in weeks %}
+                                {% if day == 0 %}
+                                    <td>&nbsp</td>
+                                {% elif _month== true and day == date.day %}
+                                    <td style="background-color:hotpink;">{{ day }}</td>
+                                {% else %}
+                                    <td>{{ day }}</td>
+                                {% endif %}
+                            {% endfor %}
+                        </tr>
+
+                    {% endfor %}
+                {% endwith %}
+                </table>
+                </table>
+            </div>
+        {% endfor %}
+    </table>
+    </div>
+{% endblock %}

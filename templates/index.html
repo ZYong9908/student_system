@@ -1,0 +1,57 @@
+{% extends 'template.html' %}
+{% block head %}
+    <title>学生管理系统</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/bootstrap-responsive.min.css"/>
+
+    <link rel="stylesheet" href="css/matrix-style.css"/>
+    <link rel="stylesheet" href="css/matrix-media.css"/>
+{% endblock %}
+{% block content %}
+    <!--breadcrumbs-->
+    <div id="content-header">
+        <div id="breadcrumb">
+            <a href="/index" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> 首页</a>
+        </div>
+    </div>
+    <!--End-breadcrumbs-->
+
+    <!--Action boxes-->
+    <div class="container-fluid">
+        <div class="quick-actions_homepage">
+            <ul class="quick-actions">
+                <li class="bg_lg span3">
+                    <a href="/charts"> <i class="icon-signal"></i> 图表统计</a>
+                </li>
+                <li class="bg_ly">
+                    <a href="/select-course"> <i class="icon-inbox"></i> 学生选课情况 </a>
+                </li>
+                <li class="bg_lo">
+                    <a href="/student-datas"> <i class="icon-th"></i> 学生个人信息</a>
+                </li>
+                <li class="bg_ls">
+                    <a href="/grade"> <i class="icon-fullscreen"></i>学生成绩录入及查询</a>
+                </li>
+                <li class="bg_lo span3">
+                    <a href="/reward"> <i class="icon-th-list"></i>奖惩情况</a>
+                </li>
+                <li class="bg_lb">
+                    <a href="/graduation"> <i class="icon-pencil"></i>已毕业学生去向</a>
+                </li>
+                <li class="bg_lg">
+                    <a href="/calendar"> <i class="icon-calendar"></i> 日历</a>
+                </li>
+                <li class="bg_lr">
+                    <a href="/login"> <i class="icon-info-sign"></i>退出</a>
+                </li>
+
+            </ul>
+        </div>
+
+        <hr/>
+
+    </div>
+
+{% endblock %}
