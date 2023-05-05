@@ -1,43 +1,59 @@
 {% extends 'template.html' %}
+
 {% block head %}
+    <!-- 设置页面标题 -->
     <title>学生管理系统</title>
+    <!-- 设置页面编码方式和显示比例 -->
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- 引入Bootstrap CSS文件 -->
     <link rel="stylesheet" href="css/bootstrap.min.css"/>
     <link rel="stylesheet" href="css/bootstrap-responsive.min.css"/>
+    <!-- 引入自定义CSS文件 -->
     <link rel="stylesheet" href="css/matrix-style.css"/>
     <link rel="stylesheet" href="css/matrix-media.css"/>
 {% endblock %}
+
 {% block content %}
     <div id="content-header">
+        <!-- 页面面包屑导航栏 -->
         <div id="breadcrumb">
             <a href="/index" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> 首页</a>
         </div>
     </div>
+    <!-- 快捷操作模块 -->
     <div class="container-fluid">
         <div class="quick-actions_homepage">
             <ul class="quick-actions">
+                <!-- 图表统计 -->
                 <li class="bg_lg span3">
                     <a href="/charts"> <i class="icon-signal"></i> 图表统计</a>
                 </li>
+                <!-- 学生选课情况 -->
                 <li class="bg_ly">
                     <a href="/select-course"> <i class="icon-inbox"></i> 学生选课情况 </a>
                 </li>
+                <!-- 学生个人信息 -->
                 <li class="bg_lo">
                     <a href="/student-datas"> <i class="icon-th"></i> 学生个人信息</a>
                 </li>
+                <!-- 学生成绩录入及查询 -->
                 <li class="bg_ls">
                     <a href="/grade"> <i class="icon-fullscreen"></i>学生成绩录入及查询</a>
                 </li>
+                <!-- 奖惩情况 -->
                 <li class="bg_lo span3">
                     <a href="/reward"> <i class="icon-th-list"></i>奖惩情况</a>
                 </li>
+                <!-- 已毕业学生去向统计 -->
                 <li class="bg_lb">
                     <a href="/graduation"> <i class="icon-pencil"></i>已毕业学生去向</a>
                 </li>
+                <!-- 日历 -->
                 <li class="bg_lg">
                     <a href="/calendar"> <i class="icon-calendar"></i> 日历</a>
                 </li>
+                <!-- 退出登录 -->
                 <li class="bg_lr">
                     <a href="/login"> <i class="icon-info-sign"></i>退出</a>
                 </li>

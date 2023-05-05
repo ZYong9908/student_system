@@ -1,29 +1,37 @@
 {% extends 'template.html' %}
+
 {% block head %}
+    <!-- 设置页面标题 -->
     <title>奖惩情况页面</title>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- 引入Bootstrap样式 -->
     <link rel="stylesheet" href="css/bootstrap.min.css"/>
     <link rel="stylesheet" href="css/bootstrap-responsive.min.css"/>
+    <!-- 引入自定义样式 -->
     <link rel="stylesheet" href="css/matrix-style.css"/>
     <link rel="stylesheet" href="css/matrix-media.css"/>
+    <!-- 引入ECharts和Walden主题 -->
     <script src="js/echarts.min.js"></script>
     <script src="js/walden.js"></script>
     <script type="text/javascript">
+        // 删除奖惩信息的操作，弹出删除成功的提示框
         function delete_reward() {
             alert('数据删除成功！')
         }
     </script>
 {% endblock %}
+
 {% block content %}
     <div id="content-header">
         <div id="breadcrumb">
+            <!-- 面包屑导航 -->
             <a href="/index" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a>
             <a href="/reward" class="current">奖惩情况</a>
         </div>
     </div>
     <table style="width: 80%;margin-left: 88px;background:lightseagreen;">
-        <caption>奖惩信息&#12288;共{{ reward_list|length }}条记录</caption>
+        <caption>奖惩信息　共{{ reward_list|length }}条记录</caption>
         <tr>
             <td style="width: 87px;text-align: center">学号</td>
             <td style="width: 87px;text-align: center">姓名</td>
@@ -34,6 +42,7 @@
         {% for item in reward_list %}
             <tr>
                 {% for items in item %}
+                    <!-- 循环输出表格内容 -->
                     <td style="width: 87px;text-align: center">{{ items }}</td>
                 {% endfor %}
                 <td style="width: 87px;text-align: center"><a href="/delete-reward/{{ item }}" onclick="delete_reward()">删除</a>

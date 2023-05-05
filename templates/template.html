@@ -1,42 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<!-- 页面文档类型声明 -->
+<html lang="zh">
+<!-- 设置页面语言为中文 -->
 <head>
     {% block head %}
     {% endblock %}
+    <!-- head标签，可在placeholder之间添加元数据，为网页提供信息 -->
 </head>
 <body>
+<!-- body标签，网页主体部分 -->
 <div id="header">
-    <h2>学生管理系统</h2>
+    <h2>学生管理系统</h2> <!-- 网页标题 -->
 </div>
 <div id="user-nav" class="navbar navbar-inverse">
     <ul class="nav">
         <li class=""><a title="" href="/login"><i class="icon icon-share-alt"></i> <span class="text">退出</span></a></li>
+        <!-- 用户导航区域，包含退出按钮 -->
     </ul>
 </div>
 <div id="sidebar">
+    <!-- 左侧边栏区域 -->
     <a href="#" class="visible-phone"><i class="icon icon-home"></i>图表统计</a>
+    <!-- 隐藏的小屏幕下的菜单 -->
     <ul>
         <li>
             <a href="/index"><i class="icon icon-home"></i> <span>首页</span></a>
+            <!-- 导航链接，指向不同的视图 -->
         </li>
         <li>
             <a href="/charts"><i class="icon icon-signal"></i> <span>图表统计</span></a>
+            <!-- 导航链接，指向不同的视图 -->
         </li>
         <li>
             <a href="/select-course"><i class="icon icon-inbox"></i> <span>学生选课情况</span></a>
+            <!-- 导航链接，指向不同的视图 -->
         </li>
         <li>
             <a href="/student-datas"><i class="icon icon-th"></i> <span>学生个人信息</span></a>
+            <!-- 导航链接，指向不同的视图 -->
         </li>
         <li>
             <a href="/grade"><i class="icon icon-fullscreen"></i> <span>学生成绩录入及查询</span></a>
+            <!-- 导航链接，指向不同的视图 -->
         </li>
         <li class="active">
             <a href="/reward"><i class="icon icon-fullscreen"></i> <span></span>奖惩情况</a>
-
+            <!-- 导航链接，指向不同的视图，被激活状态 -->
         </li>
         <li>
             <a href="/graduation"><i class="icon icon-pencil"></i> <span>已毕业学生去向统计</span></a>
+            <!-- 导航链接，指向不同的视图 -->
         </li>
 
     </ul>
@@ -44,6 +57,8 @@
 <div id="content">
     {% block content %}
     {% endblock %}
+    <!-- 网页内容区域，在页面其他位置显示内容 -->
 </div>
 </body>
 </html>
+<!-- 页面文档结束 -->

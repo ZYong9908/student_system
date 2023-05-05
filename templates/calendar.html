@@ -25,49 +25,67 @@
     </style>
 {% endblock %}
 {% block content %}
-    <div id="content-header">
-        <div id="breadcrumb">
-            <a href="/index" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a>
-            <a href="/calender" class="current">日历</a>
-        </div>
-    </div>
-    <div class="container" style="width: 100%">
-        <h3 class="text-center">日历 {{ date.year }}
-        </h3>
-        {% set week_addr = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'] %}
-        {% for month_addr,monthInfo in content.items() %}
-            <div class="col-lg-3">
-                <h4 class="text-center">{{ month_addr }}</h4>
-                {% with _month=false %}
-                    {% if month_addr == this_month %}
-                        <table style='background-color:#a6e1ec;width:800px;margin-left: 200px' class="table table-bordered">
-                        {% set _month = true %}
-                    {% else %}
-                        <table class="table table-bordered" style="width: 800px;margin-left: 200px">
-                    {% endif %}
-                    <tr>
-                        {% for addr in week_addr %}
-                            <th>{{ addr }}</th>
-                        {% endfor %}
-                    </tr>
-                    {% for weeks in monthInfo %}
-                        <tr>
-                            {% for day in weeks %}
-                                {% if day == 0 %}
-                                    <td>&nbsp</td>
-                                {% elif _month== true and day == date.day %}
-                                    <td style="background-color:hotpink;">{{ day }}</td>
-                                {% else %}
-                                    <td>{{ day }}</td>
-                                {% endif %}
-                            {% endfor %}
-                        </tr>
+<!-- 创建日历页头，包括面包屑导航 -->
+<div id="content-header">
+<div id="breadcrumb">
+<a href="/index" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a>
+<a href="/calender" class="current">日历</a>
+</div>
+</div>
+
+<!-- 创建一个100%宽的容器，显示当前年份和月份 -->
+<div class="container" style="width: 100%">
+<h3 class="text-center">日历 {{ date.year }}</h3>
+
+<!-- 定义星期地址，用于循环创建日历中的星期行 -->
+{% set week_addr = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'] %}
+
+<!-- 循环遍历每个月的信息，并创建对应的日历表格 -->
+{% for month_addr,monthInfo in content.items() %}
+    <!-- 创建一列（占3/12列），显示月份 -->
+    <div class="col-lg-3">
+        <h4 class="text-center">{{ month_addr }}</h4>
+
+        <!-- 判断当前月份是否是当月，以设置不同样式 -->
+        {% with _month=false %}
+            {% if month_addr == this_month %}
+                <table style='background-color:#a6e1ec;width:800px;margin-left: 200px' class="table table-bordered">
+                {% set _month = true %}
+            {% else %}
+                <table class="table table-bordered" style="width: 800px;margin-left: 200px">
+            {% endif %}
+
+            <!-- 创建星期行，每一列将代表一个星期的日期 -->
+            <tr>
+                {% for addr in week_addr %}
+                    <th>{{ addr }}</th>
+                {% endfor %}
+            </tr>
+
+            <!-- 遍历该月所有的周，创建对应的日期行 -->
+            {% for weeks in monthInfo %}
+                <tr>
+                    {% for day in weeks %}
+                        {% if day == 0 %}
+                            <!-- 如果该天是0，则留白 -->
+                            <td>&nbsp</td>
+                        {% elif _month== true and day == date.day %}
+                            <!-- 如果当前月份是当月，并且日期是今天，则设置为粉色 -->
+                            <td style="background-color:hotpink;">{{ day }}</td>
+                        {% else %}
+                            <!-- 否则直接显示日期 -->
+                            <td>{{ day }}</td>
+                        {% endif %}
                     {% endfor %}
-                {% endwith %}
-                </table>
-                </table>
-            </div>
-        {% endfor %}
+                </tr>
+            {% endfor %}
+        {% endwith %}
+
+        <!-- 结束表格 -->
         </table>
     </div>
+{% endfor %}
+
+<!-- 结束容器 -->
+</div>
 {% endblock %}

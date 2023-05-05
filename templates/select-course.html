@@ -1,32 +1,46 @@
 {% extends 'template.html' %}
+<!-- 继承基础模板 -->
+
 {% block head %}
     <title>学生选课情况</title>
+    <!-- 设置页面标题 -->
     <meta charset="UTF-8"/>
+    <!-- 定义字符编码为UTF-8 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- 设置浏览器视口的宽度和初始缩放比例 -->
     <link rel="stylesheet" href="css/bootstrap.min.css"/>
     <link rel="stylesheet" href="css/bootstrap-responsive.min.css"/>
     <link rel="stylesheet" href="css/matrix-style.css"/>
     <link rel="stylesheet" href="css/matrix-media.css"/>
+    <!-- 引入Bootstrap和自定义样式 -->
 {% endblock %}
+
 {% block content %}
     <div id="content-header">
         <div id="breadcrumb">
             <a href="/index" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a>
+            <!-- 顶部面包屑导航，返回首页 -->
             <a href="#" class="current">学生选课情况</a>
+            <!-- 当前页面的位置指示 -->
         </div>
     </div>
     <div id="data1" style="width: 100%">
         <form action="" method="post">
+            <!-- 可以通过输入学号进行单个查询或者查询全部选课信息 -->
             <label>
                 <input style="height: 30px" type="text" name="snum" placeholder="输入学号查询选课信息"/>
                 <input type="submit" style="height: 30px" value="查询">
                 <a href="/all-select-course" style="margin-left: 20px;color: #0e90d2">查询全部</a>
+                <!-- 查询全部选课信息的链接 -->
                 <a href="/select-course" style="margin-left: 30px;color: #0e90d2">返回单个查询</a>
+                <!-- 返回单个查询的链接 -->
             </label>
         </form>
         {% if course_lst|length==1 %}
             <table style="width: 80%;margin-left: 88px;background:lightgoldenrodyellow;">
-                <caption>学生选课信息&#12288;共{{ course_lst|length }}条记录</caption>
+                <!-- 显示学生选课信息的表格 -->
+                <caption>学生选课信息　共{{ course_lst|length }}条记录</caption>
+                <!-- 表格标题 -->
                 <tr>
                     <td style="width: 87px;text-align: center">学号</td>
                     <td style="width: 87px;text-align: center">选课一</td>
@@ -36,15 +50,19 @@
                     <td style="width: 87px;text-align: center">修改操作</td>
                 </tr>
                 {% for item in course_lst %}
+                    <!-- 循环渲染表格内容 -->
                     <tr>
                         {% for items in item %}
+                            <!-- 遍历每个学生的选课信息，并在表格中输出 -->
                             <td style="width: 87px;text-align: center">{{ items }}</td>
                         {% endfor %}
                         <td style="width: 87px;text-align: center"><a href="/update-select-course/{{ item }}">修改</a></td>
+                        <!-- 提供修改选课信息的链接 -->
                     </tr>
                 {% endfor %}
             </table>
         {% else %}
+            <!-- 处理查询多个学生选课信息的情况 -->
             <table style="width: 80%;margin-left: 88px;background: lightgoldenrodyellow">
                 <caption>学生选课信息&#12288;共{{ course_lst1|length }}条记录</caption>
                 <tr>
@@ -56,6 +74,7 @@
                     <td style="width: 87px;text-align: center">修改操作</td>
                 </tr>
                 {% for item in course_lst1 %}
+                    <!-- 循环渲染表格内容 -->
                     <tr>
                         {% for items in item %}
                             <td style="width: 87px;text-align: center">{{ items }}</td>

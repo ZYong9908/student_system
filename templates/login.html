@@ -2,6 +2,7 @@
 <html lang="zh">
 <head>
     <meta charset="UTF-8">
+    <!-- 设置页面标题 -->
     <title>学生管理系统登录界面</title>
 </head>
 <style>
@@ -15,11 +16,12 @@
         overflow: hidden;
     }
 
+    /* 登录界面的头部 */
     #loginheader {
         padding-top: 5px;
-
     }
 
+    /* 登录区域 */
     #login {
         width: 400px;
         height: 400px;
@@ -31,6 +33,7 @@
         border-color: black;
     }
 
+    /* 登录表单输入框 */
     #login input {
         margin-top: 40px;
         width: 70%;
@@ -47,26 +50,30 @@
         margin-left: 10px;
 
     }
-
 </style>
 <body>
 <div id="login">
     <div id="loginheader">
+        <!-- 登录界面的标题 -->
         <p>学生管理系统登录</p>
     </div>
     <form action="" method="post">
         <div>
             <label>用户名：
+                <!-- 输入用户名的文本框 -->
                 <input type="text" name="username" placeholder="请输入用户名："/>
             </label>
         </div>
         <div>
             <label>密&#12288;码：
+                <!-- 输入密码的文本框 -->
                 <input type="password" name="password" placeholder="请输入密码："/>
             </label>
         </div>
+        <!-- 提交按钮 -->
         <input type="submit" value="登录" style="width: 75%;margin-left: 50px"/>
         <div></div>
+        <!-- 注册链接 -->
         <a href="/regist" style="float: right">注册</a>
     </form>
 </div>

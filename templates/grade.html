@@ -14,71 +14,84 @@
     </script>
 {% endblock %}
 {% block content %}
-    <div id="content-header">
-        <div id="breadcrumb">
-            <a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a
-                href="#" class="current">学生成绩录入及查询</a>
-        </div>
-    </div>
-    <div id="data3" style="width: 100%">
-        <form action="" method="post">
-            <label>
-                <input style="height: 30px" type="text" name="snum" placeholder="输入学号查询成绩"/>
-                <input type="submit" style="height: 30px" value="查询" href="/grade">
-                <a href="/all-grade" style="margin-left: 20px;color: #0e90d2">查询全部</a>
-                <a href="/grade" style="margin-left: 30px;color: #0e90d2">返回单个查询</a>
-                <a href="/add-grade" style="margin-left: 30px;color: #0e90d2">录入学生成绩</a>
-            </label>
-        </form>
-        {% if grade_lst|length==1 %}
-            <table style="width: 80%;margin-left: 88px;background:coral;">
-                <caption>学生成绩&#12288;共{{ grade_lst|length }}条记录</caption>
-                <tr>
-                    <td style="width: 87px;text-align: center">学号</td>
-                    <td style="width: 87px;text-align: center">课程一</td>
-                    <td style="width: 87px;text-align: center">课程二</td>
-                    <td style="width: 87px;text-align: center">课程三</td>
-                    <td style="width: 87px;text-align: center">课程四</td>
-                    <td style="width: 87px;text-align: center">修改操作</td>
-                    <td style="width: 87px;text-align: center">删除操作</td>
+<!-- 显示学生成绩查询界面 -->
+<div id="content-header">
+<!-- 面包屑导航栏 -->
+<div id="breadcrumb">
+<a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a>
+<a href="#" class="current">学生成绩录入及查询</a>
+</div>
+</div>
 
-                </tr>
-                {% for item in grade_lst %}
-                    <tr>
-                        {% for items in item %}
-                            <td style="width: 87px;text-align: center">{{ items }}</td>
-                        {% endfor %}
-                        <td style="width: 87px;text-align: center"><a href="/update-grade/{{ item }}">修改</a>
-                        </td>
-                        <td style="width: 87px;text-align: center"><a href="/delete-grade/{{ item }}" onclick="delete_grade()">删除</a>
-                        </td>
-                    </tr>
+<!-- 学生成绩查询表格 -->
+<div id="data3" style="width: 100%">
+<form action="" method="post">
+<label>
+<!-- 学号输入框 -->
+<input style="height: 30px" type="text" name="snum" placeholder="输入学号查询"/>
+<!-- 查询按钮 -->
+<input type="submit" style="height: 30px" value="查询" href="/grade">
+<!-- 全部成绩查询按钮 -->
+<a href="/all-grade" style="margin-left: 20px;color: #0e90d2">查询全部</a>
+<!-- 返回单个查询按钮 -->
+<a href="/grade" style="margin-left: 30px;color: #0e90d2">返回单个查询</a>
+<!-- 录入学生成绩按钮 -->
+<a href="/add-grade" style="margin-left: 30px;color: #0e90d2">录入学生成绩</a>
+</label>
+</form>
+
+{% if grade_lst|length==1 %}
+    <!-- 只有一组成绩时显示的表格 -->
+    <table style="width: 80%;margin-left: 88px;background:coral;">
+        <caption>学生成绩&#12288;共{{ grade_lst|length }}条记录</caption>
+        <tr>
+            <td style="width: 87px;text-align: center">学号</td>
+            <td style="width: 87px;text-align: center">课程一</td>
+            <td style="width: 87px;text-align: center">课程二</td>
+            <td style="width: 87px;text-align: center">课程三</td>
+            <td style="width: 87px;text-align: center">课程四</td>
+            <td style="width: 87px;text-align: center">修改操作</td>
+            <td style="width: 87px;text-align: center">删除操作</td>
+        </tr>
+        {% for item in grade_lst %}
+            <tr>
+                {% for items in item %}
+                    <!-- 表格内容 -->
+                    <td style="width: 87px;text-align: center">{{ items }}</td>
                 {% endfor %}
-            </table>
-        {% else %}
-            <table style="width: 80%;margin-left: 88px;background: #5bc0de">
-                <caption>学生成绩&#12288;共{{ grade_lst1|length }}条记录</caption>
-                <tr>
-                    <td style="width: 87px;text-align: center">学号</td>
-                    <td style="width: 87px;text-align: center">课程一</td>
-                    <td style="width: 87px;text-align: center">课程二</td>
-                    <td style="width: 87px;text-align: center">课程三</td>
-                    <td style="width: 87px;text-align: center">课程四</td>
-                    <td style="width: 87px;text-align: center">修改操作</td>
-                    <td style="width: 87px;text-align: center">删除操作</td>
-                </tr>
-                {% for item in grade_lst1 %}
-                    <tr>
-                        {% for items in item %}
-                            <td style="width: 87px;text-align: center">{{ items }}</td>
-                        {% endfor %}
-                        <td style="width: 87px;text-align: center"><a href="/update-grade/{{ item }}">修改</a>
-                        </td>
-                        <td style="width: 87px;text-align: center"><a href="/delete-grade/{{ item }}" onclick="delete_grade()">删除</a>
-                        </td>
-                    </tr>
+                <!-- 修改按钮 -->
+                <td style="width: 87px;text-align: center"><a href="/update-grade/{{ item }}">修改</a></td>
+                <!-- 删除按钮 -->
+                <td style="width: 87px;text-align: center"><a href="/delete-grade/{{ item }}" onclick="delete_grade()">删除</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    <!-- 多组成绩时显示的表格 -->
+    <table style="width: 80%;margin-left: 88px;background: #5bc0de">
+        <caption>学生成绩&#12288;共{{ grade_lst1|length }}条记录</caption>
+        <tr>
+            <td style="width: 87px;text-align: center">学号</td>
+            <td style="width: 87px;text-align: center">课程一</td>
+            <td style="width: 87px;text-align: center">课程二</td>
+            <td style="width: 87px;text-align: center">课程三</td>
+            <td style="width: 87px;text-align: center">课程四</td>
+            <td style="width: 87px;text-align: center">修改操作</td>
+            <td style="width: 87px;text-align: center">删除操作</td>
+        </tr>
+        {% for item in grade_lst1 %}
+            <tr>
+                {% for items in item %}
+                    <!-- 表格内容 -->
+                    <td style="width: 87px;text-align: center">{{ items }}</td>
                 {% endfor %}
-            </table>
-        {% endif %}
-    </div>
+                <!-- 修改按钮 -->
+                <td style="width: 87px;text-align: center"><a href="/update-grade/{{ item }}">修改</a></td>
+                <!-- 删除按钮 -->
+                <td style="width: 87px;text-align: center"><a href="/delete-grade/{{ item }}" onclick="delete_grade()">删除</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endif %}
+</div>
 {% endblock %}
