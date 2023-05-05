@@ -17,10 +17,11 @@
 {% endblock %}
 {% block content %}
     <div id="content-header">
-        <div id="breadcrumb"><a href="/index" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a
-                href="/reward" class="current">奖惩情况</a></div>
+        <div id="breadcrumb">
+            <a href="/index" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a>
+            <a href="/reward" class="current">奖惩情况</a>
+        </div>
     </div>
-
     <table style="width: 80%;margin-left: 88px;background:lightseagreen;">
         <caption>奖惩信息&#12288;共{{ reward_list|length }}条记录</caption>
         <tr>
@@ -28,18 +29,14 @@
             <td style="width: 87px;text-align: center">姓名</td>
             <td style="width: 87px;text-align: center">二级学院</td>
             <td style="width: 87px;text-align: center">奖惩情况</td>
-
             <td style="width: 87px;text-align: center">删除操作</td>
-
         </tr>
         {% for item in reward_list %}
             <tr>
                 {% for items in item %}
                     <td style="width: 87px;text-align: center">{{ items }}</td>
                 {% endfor %}
-
-                <td style="width: 87px;text-align: center"><a href="/delete-reward/{{ item }}"
-                                                              onclick="delete_reward()">删除</a>
+                <td style="width: 87px;text-align: center"><a href="/delete-reward/{{ item }}" onclick="delete_reward()">删除</a>
                 </td>
             </tr>
         {% endfor %}

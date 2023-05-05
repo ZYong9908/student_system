@@ -1,11 +1,14 @@
-import studentdata as std
+import calendar
+
+from flask import request
 from pyecharts import options as opts
 from pyecharts.charts import Bar, Pie
-from flask import request, session
-import calendar
+
+import studentdata as std
 
 calendar.setfirstweekday(firstweekday=6)
 week = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa']
+
 
 def regist():
     username = request.form.get('username')
@@ -24,6 +27,8 @@ def regist():
         return res
     res = std.User(username, password).regist()
     return res
+
+
 # 登录功能
 def login():
     username = request.form.get('username')
@@ -65,7 +70,7 @@ def char_age():
         student = std.Student('', '', '', f'{item}', '', '', '')
         num_lst.append(len(student.search_age()))
     bar = (Bar(init_opts=opts.InitOpts(bg_color='cornflowerblue')).add_xaxis(age_lst)
-        .add_yaxis("人数", num_lst).set_global_opts(
+    .add_yaxis("人数", num_lst).set_global_opts(
         title_opts=opts.TitleOpts(title="各年龄学生人数")))
     bar_options = bar.dump_options()
     return bar_options
@@ -144,6 +149,7 @@ def search_snum_grade(snum):
     grade_lst = []
     grade_lst.append(std.Grade(snum, '', '', '', '').search_snum_grade())
     return grade_lst
+
 
 # 查找全部学生的成绩
 def search_grade():

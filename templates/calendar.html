@@ -8,14 +8,16 @@
     <link rel="stylesheet" href="css/matrix-style.css"/>
     <link rel="stylesheet" href="css/matrix-media.css"/>
     <style>
-        td{
-            width:50px;
+        td {
+            width: 50px;
             text-align: center;
         }
-          th{
-            width:50px;
+
+        th {
+            width: 50px;
             text-align: center;
         }
+
         h3 h4 {
             text-align: center;
         }
@@ -24,10 +26,12 @@
 {% endblock %}
 {% block content %}
     <div id="content-header">
-        <div id="breadcrumb"><a href="/index" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a>
-            <a href="/calender" class="current">日历</a></div>
+        <div id="breadcrumb">
+            <a href="/index" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a>
+            <a href="/calender" class="current">日历</a>
+        </div>
     </div>
-    <div class="container"style="width: 100%">
+    <div class="container" style="width: 100%">
         <h3 class="text-center">日历 {{ date.year }}
         </h3>
         {% set week_addr = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'] %}
@@ -58,13 +62,12 @@
                                 {% endif %}
                             {% endfor %}
                         </tr>
-
                     {% endfor %}
                 {% endwith %}
                 </table>
                 </table>
             </div>
         {% endfor %}
-    </table>
+        </table>
     </div>
 {% endblock %}

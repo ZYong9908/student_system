@@ -15,8 +15,10 @@
 {% endblock %}
 {% block content %}
     <div id="content-header">
-        <div id="breadcrumb"><a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a
-                href="#" class="current">学生成绩录入及查询</a></div>
+        <div id="breadcrumb">
+            <a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a
+                href="#" class="current">学生成绩录入及查询</a>
+        </div>
     </div>
     <div id="data3" style="width: 100%">
         <form action="" method="post">
@@ -48,8 +50,7 @@
                         {% endfor %}
                         <td style="width: 87px;text-align: center"><a href="/update-grade/{{ item }}">修改</a>
                         </td>
-                        <td style="width: 87px;text-align: center"><a href="/delete-grade/{{ item }}"
-                                                                      onclick="delete_grade()">删除</a>
+                        <td style="width: 87px;text-align: center"><a href="/delete-grade/{{ item }}" onclick="delete_grade()">删除</a>
                         </td>
                     </tr>
                 {% endfor %}
@@ -57,7 +58,6 @@
         {% else %}
             <table style="width: 80%;margin-left: 88px;background: #5bc0de">
                 <caption>学生成绩&#12288;共{{ grade_lst1|length }}条记录</caption>
-
                 <tr>
                     <td style="width: 87px;text-align: center">学号</td>
                     <td style="width: 87px;text-align: center">课程一</td>
@@ -74,14 +74,11 @@
                         {% endfor %}
                         <td style="width: 87px;text-align: center"><a href="/update-grade/{{ item }}">修改</a>
                         </td>
-                        <td style="width: 87px;text-align: center"><a href="/delete-grade/{{ item }}"
-                                                                      onclick="delete_grade()">删除</a>
+                        <td style="width: 87px;text-align: center"><a href="/delete-grade/{{ item }}" onclick="delete_grade()">删除</a>
                         </td>
                     </tr>
                 {% endfor %}
             </table>
         {% endif %}
-
     </div>
-
 {% endblock %}
