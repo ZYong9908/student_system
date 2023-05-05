@@ -20,18 +20,7 @@
         <div id="breadcrumb"><a href="/index" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a
                 href="/reward" class="current">奖惩情况</a></div>
     </div>
-    <div id="main5" style="width:100%;height: 300px"></div>
-    <div id="main6" style="width:100%;height: 200px;"></div>
 
-
-    <script type="text/javascript">
-        var mychart1 = echarts.init(document.getElementById('main5'), 'walden');
-        var mychart2 = echarts.init(document.getElementById('main6'), 'walden');
-
-        mychart1.setOption({{ bar_options|safe }});
-        mychart2.setOption({{ bar_options1|safe }});
-
-    </script>
     <table style="width: 80%;margin-left: 88px;background:lightseagreen;">
         <caption>奖惩信息&#12288;共{{ reward_list|length }}条记录</caption>
         <tr>
